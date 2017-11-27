@@ -2,7 +2,6 @@
 
 # Given a singly linked list of integers, determine whether or not it's a palindrome.
 
-# Definition for singly-linked list:
 class ListNode(object):
   def __init__(self, x):
     self.value = x
@@ -31,25 +30,3 @@ def isListPalindrome(l):
         nodeA = nodeA.next
         nodeB = nodeB.next
     return True
-
-
-
-# Test : 0 -> 1 -> 2 -> 1 -> 0
-one = ListNode(0)
-one.next = ListNode(1)
-one.next.next = ListNode(2)
-one.next.next.next = ListNode(1)
-one.next.next.next.next = ListNode(0)
-
-print(isListPalindrome(one))
-
-# # print list
-# def printList(l):
-#     node = l
-#     while node != None:
-#         print(node.value)
-#         node = node.next
-#     return l
-# # printList(one)
-# r = reverseList(one)
-# printList(r)
