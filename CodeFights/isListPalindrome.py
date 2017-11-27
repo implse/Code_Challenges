@@ -20,9 +20,8 @@ def reverseList(r):
     return r
 
 def isListPalindrome(l):
-    b = reverseList(l)
     nodeA = l
-    nodeB = b
+    nodeB = reverseList(l)
     while nodeA != None:
         if nodeA.value != nodeB.value:
             return False
