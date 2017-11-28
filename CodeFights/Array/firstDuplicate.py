@@ -14,7 +14,3 @@ def firstDuplicate(a):
         else:
             num[n] = 1
     return -1
-
-# Test should return 3
-a = [2, 3, 3, 1, 5, 2]
-print(firstDuplicate(a))
