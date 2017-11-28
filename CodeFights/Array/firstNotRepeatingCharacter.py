@@ -14,8 +14,3 @@ def firstNotRepeatingCharacter(s):
         if alphabet[k] == 1:
             return k
     return "_"
-
-f = firstNotRepeatingCharacter("abcdefghijklmnopqrstuvwxyziflskecznslkjfabe")
-print(f)
-# g = firstNotRepeatingCharacter("xdnxxlvupzuwgigeqjggosgljuhliybkjpibyatofcjbfxwtalc")
-# print(g)
