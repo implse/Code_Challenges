@@ -28,7 +28,6 @@ def mostActiveYoutubeChannel(videoIDs):
             decodetext = text.decode("utf-8")
         text_2_json = json.loads(decodetext)
         channel_title = text_2_json["items"][0]["snippet"]["channelTitle"]
-        print(channel_title)
         if channel_title not in channel:
             channel[channel_title] = 1
         else:
