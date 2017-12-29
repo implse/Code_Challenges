@@ -19,12 +19,3 @@ def regex_rev(s):
     match = re.search(rgx, s)
     w = match.group(0)[::-1]
     return s.replace(match.group(0), w[1:-1])
-
-# test 1
-s = "a(bc)de"
-# test 2
-s ="a(bcdefghijkl(mno)p)q"
-
-
-print(reverseParentheses(s))
-# print(regex_rev(s))
