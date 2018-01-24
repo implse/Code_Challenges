@@ -35,8 +35,6 @@ def reverseNodesInKGroups(l, k):
     cycle = size(l)//k
     if cycle < 1:
         head_next = current
-        while current != None:
-            current = current.next
         return head_next
     while current != None and step > 0:
         head_next = current.next
