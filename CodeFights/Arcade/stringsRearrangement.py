@@ -14,7 +14,6 @@
 
 
 # Solution with itertools
-
 from itertools import permutations
 
 def stringsRearrangement(inputArray):
