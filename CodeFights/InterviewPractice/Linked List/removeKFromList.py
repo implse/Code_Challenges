@@ -16,12 +16,12 @@ class ListNode(object):
 
 def removeKFromList(l, k):
     current = l
+    previous = None
     while current != None:
         if current.value != k:
             break
         current = current.next
     l = current
-    previous = None
     while current != None:
         if current.value == k:
             if previous:
