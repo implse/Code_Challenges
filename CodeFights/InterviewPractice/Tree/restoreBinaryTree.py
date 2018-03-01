@@ -21,12 +21,8 @@ class Tree(object):
 def restoreBinaryTree(inorder, preorder):
     if not inorder or not preorder:
         return None
-    # define the root node
     root = Tree(preorder[0])
-    # Get the index of the Root
     left_length = inorder.index(preorder[0])
-    # Recursive call left
     root.left = restoreBinaryTree(inorder[:left_length], preorder[1:left_length+1])
-    # REcursive call right
     root.right = restoreBinaryTree(inorder[left_length+1:], preorder[left_length+1:])
     return root
