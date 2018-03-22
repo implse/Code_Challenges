@@ -23,9 +23,3 @@ def insert(r,val):
         else:
             insert(r.right, val)
     return r
-
-bst = Node(4)
-bst.left = Node(2)
-bst.left.right = Node(3)
-bst.left.left = Node(1)
-bst.right = Node(7)
