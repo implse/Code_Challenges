@@ -22,7 +22,7 @@ def addFragment(root, fragment):
     current.endOfWord = True
 
 def findSubstringInWord(w, root):
-    lenLongSubstr = 0
+    lnLongSubstr = 0
     longestPos = 0
     ln = len(w)
     for start_pos in range(ln):
@@ -33,12 +33,12 @@ def findSubstringInWord(w, root):
                 break
             current = current.children[l]
             length = position - start_pos + 1
-            if current.endOfWord and length > lenLongSubstr:
-                lenLongSubstr = length
-                longestPos   = start_pos
-    if lenLongSubstr == 0:
+            if current.endOfWord and length > lnLongSubstr:
+                lnLongSubstr = length
+                longestPos = start_pos
+    if lnLongSubstr == 0:
         return w
-    end = longestPos + lenLongSubstr
+    end = longestPos + lnLongSubstr
     return w[:longestPos] + "[" + w[longestPos: end] + "]" + w[end:]
 
 def findSubstrings(words, parts):
