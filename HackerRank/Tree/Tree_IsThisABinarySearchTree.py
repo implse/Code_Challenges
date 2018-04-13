@@ -34,16 +34,3 @@ def check_binary_search_tree_(root):
             return False
         a = b
     return True
-
-# Test 1
-t = node(3)
-t.left = node(5)
-t.left.left = node(1)
-t.left.right = node(4)
-t.right = node(2)
-t.right.right = node(6)
-
-
-inOrder(t)
-print(inOrder_value)
-print(check_binary_search_tree_(t))
