@@ -15,19 +15,15 @@ class ListNode(object):
     self.next = None
 
 def removeKFromList(l, k):
-    current = l
-    previous = None
-    while current != None:
-        if current.value != k:
-            break
-        current = current.next
-    l = current
-    while current != None:
-        if current.value == k:
-            if previous:
-                previous.next = current.next
-            current = current.next
-            continue
-        previous = current
-        current = current.next
+    prev = None
+    node = l
+    while node:
+        if node.value == k:
+            if prev != None:
+                prev.next = node.next
+            else:
+                l = node.next
+        else:
+            prev = node
+        node = node.next
     return l
