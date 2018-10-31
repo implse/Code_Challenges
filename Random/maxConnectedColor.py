@@ -7,7 +7,7 @@ def connectedColor(grid):
         for c in range(len(grid[0])):
             max_current = bfs(grid, r, c)
         max_color_connected = max(max_color_connected, max_current)
-  return max_color_connected
+    return max_color_connected
 
 # Breadth First Search - return max connected
 def bfs(grid, r, c):
@@ -38,10 +38,10 @@ def bfs(grid, r, c):
               max_color += 1
               queue.append((row, j))
               visited.append((row, j))
-    return color_grid
+    return max_color
 
 # Breadth First Search - return max color connected coordinates (tuples)
-def bfs(grid, r, c):
+def bfs_coordinates(grid, r, c):
     queue = list()
     visited = list()
     current_max = 0
@@ -71,7 +71,7 @@ def bfs(grid, r, c):
               max_color += 1
               queue.append((row, j))
               visited.append((row, j))
-        return color_grid
+    return color_grid
 
 
 # Test - max connected color Blue = 5
@@ -82,3 +82,4 @@ grid = [
 ]
 
 print(connectedColor(grid))
+print(bfs_coordinates(grid, 0, 0))
