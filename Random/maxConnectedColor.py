@@ -13,7 +13,6 @@ def connectedColor(grid):
 def bfs(grid, r, c):
     queue = list()
     visited = list()
-    current_max = 0
     queue.append((r, c))
     visited.append((r, c))
     color = grid[r][c]
@@ -24,7 +23,7 @@ def bfs(grid, r, c):
         row, column = cell
     # check top bottom
         for i in range(row - 1, row + 2):
-          if i >= 0 and i < len(grid) and color == grid[i][column]:
+          if 0 <= i < len(grid) and color == grid[i][column]:
             # check already visited
             if (i, column) not in visited:
               max_color += 1
@@ -32,7 +31,7 @@ def bfs(grid, r, c):
               visited.append((i, column))
         # Check left right
         for j in range(column - 1, column + 2):
-          if j >= 0 and j < len(grid[0]) and color == grid[row][j]:
+          if 0 <= j < len(grid[0]) and color == grid[row][j]:
             # check already visited
             if (row, j) not in visited:
               max_color += 1
@@ -44,7 +43,6 @@ def bfs(grid, r, c):
 def bfs_coordinates(grid, r, c):
     queue = list()
     visited = list()
-    current_max = 0
     queue.append((r, c))
     visited.append((r, c))
     color = grid[r][c]
@@ -56,7 +54,7 @@ def bfs_coordinates(grid, r, c):
         row, column = cell
         # check top bottom
         for i in range(row - 1, row + 2):
-          if i >= 0 and i < len(grid) and color == grid[i][column]:
+          if 0 <= i < len(grid) and color == grid[i][column]:
             color_grid.add((i, column))
             if (i, column) not in visited:
 
@@ -65,7 +63,7 @@ def bfs_coordinates(grid, r, c):
               visited.append((i, column))
         # Check left right
         for j in range(column - 1, column + 2):
-          if j >= 0 and j < len(grid[0]) and color == grid[row][j]:
+          if 0 <= j < len(grid[0]) and color == grid[row][j]:
             color_grid.add((row, j))
             if (row, j) not in visited:
               max_color += 1
