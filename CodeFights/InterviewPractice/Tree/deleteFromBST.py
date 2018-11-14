@@ -5,10 +5,10 @@
 # Both the left and the right subtrees must also be binary search trees.
 # Removing a value x from a BST t is done in the following way:
 
-# If there is no x in t, nothing happens;
-# Otherwise, let t' be a subtree of t such that t'.value = x.
-# If t' has a left subtree, remove the rightmost node from it and put it at the root of t';
-# Otherwise, remove the root of t' and its right subtree becomes the new t's root.
+    # If there is no x in t, nothing happens;
+    # Otherwise, let t' be a subtree of t such that t'.value = x.
+    # If t' has a left subtree, remove the rightmost node from it and put it at the root of t';
+    # Otherwise, remove the root of t' and its right subtree becomes the new t's root.
 
 class Node(object):
     def __init__(self, x):
