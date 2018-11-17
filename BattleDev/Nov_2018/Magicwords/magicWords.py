@@ -18,12 +18,3 @@ def magic_words(words):
     return len(magic)
 
 print(magic_words(words))
-
-
-
-
-
-
-# - Il doit contenir entre 5 et 7 lettres.
-# - Il doit commencer par deux lettres de l'alphabet qui se suivent dans l'ordre alphabétique.
-# - Il doit se terminer par une voyelle (a, e, i, o, u, ou y).
