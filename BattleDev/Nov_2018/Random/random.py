@@ -7,7 +7,6 @@ f.close()
 
 n, points = lines
 n = int(n) / 2
-print(n)
 points = points.split(" ")
 points = list(map(lambda x: int(x), points))
 
