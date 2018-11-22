@@ -16,11 +16,11 @@ for s in slots:
 perm_slots = []
 def permute(lst, choosen = []):
     global perm_slots
-    # Base Case
     if len(lst) == 0:
         perm_slots.append(choosen.copy())
         choosen = []
     else:
+        for i in range(len(lst)):
           c = lst.pop(i)
           for j in c:
             choosen.append(j)
@@ -45,6 +45,5 @@ def students(perm_slots):
     return max_students
 
 permute(slots_students, choosen = [])
-print(perm_slots)
 max_students = students(perm_slots)
 print(max_students)
