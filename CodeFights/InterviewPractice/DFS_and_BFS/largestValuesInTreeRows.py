@@ -9,45 +9,74 @@
 class Node(object):
    def __init__(self, x):
      self.value = x
-    self.left = None
-    self.right = None
+     self.left = None
+     self.right = None
 
-# Recursive Solution
-def largestValuesInTreeRows(t):
-    max_list = list()
-    largestHelper(max_list, t, 0)
-    return max_list
 
-def largestHelper(max_list, node, d):
-    if node == None:
-        return
-    if d == len(max_list):
-        max_list.append(node.value)
+# Breadth First Search Method
+def largestValuesInTreeRows1(t):
+  max_list = list()
+  largestValuesInTreeRows_bfs(t, max_list)
+  return max_list
+
+
+def largestValuesInTreeRows_bfs(t, max_list):
+  if t == None:
+    return
+  queue = list()
+  depth = 0
+  queue.append((t, depth))
+
+  while queue:
+    n, depth = queue.pop(0)
+    if depth == len(max_list):
+      max_list.append(n.value)
     else:
-        max_list[d] = max(node.value, max_list[d])
+      max_list[depth] = max(max_list[depth], n.value)
+    if n.left:
+      queue.append((n.left, depth + 1))
+    if n.right:
+      queue.append((n.right, depth + 1))
 
-    largestHelper(max_list, node.left, d + 1)
-    largestHelper(max_list, node.right, d + 1)
 
-# Iterative Solution
-import math
-def largestValuesInTreeRows(t):
-    max_list = list()
-    queue = list()
-    queue.append(t)
-    maximum = math.inf * - 1
-    if t == None:
-        return max_list
-    while true:
-        node_count = len(queue)
-        if node_count == 0:
-            break
-        while nc - 1 > 0:
-            n = queue.pop(0)
-            maximum = max(maximum, n.value)
-            if n.left:
-                queue.append(n.left)
-            if n.right:
-                queue.append(n.right)
-        max_list.append(maximum)
-    return max_list
+# Depth First Search Method
+def largestValuesInTreeRows2(t):
+  max_list = list()
+  largestValuesInTreeRows_dfs(t, max_list, 0)
+  return max_list
+
+
+def largestValuesInTreeRows_dfs(t, max_list, depth):
+  if t == None:
+    return
+  if depth == len(max_list):
+    max_list.append(t.value)
+  else:
+    max_list[depth] = max(max_list[depth], t.value)
+  largestValuesInTreeRows_dfs(t.left, max_list, depth + 1)
+  largestValuesInTreeRows_dfs(t.right, max_list, depth + 1)
+
+
+# Test
+
+t1 = Node(1)
+# depth 1
+t1.left = Node(2)
+t1.right = Node(3)
+# depth 2
+t1.left.left = Node(4)
+t1.left.right = Node(5)
+t1.right.left = Node(6)
+t1.right.right = Node(7)
+# depth 3
+t1.left.left.left = Node(8)
+t1.left.left.right = Node(9)
+t1.left.right.left = Node(10)
+t1.left.right.right = Node(11)
+t1.right.left.left = Node(12)
+t1.right.left.right = Node(13)
+t1.right.right.left = Node(14)
+t1.right.right.right = Node(15)
+
+print(largestValuesInTreeRows1(t1))
+print(largestValuesInTreeRows2(t1))
