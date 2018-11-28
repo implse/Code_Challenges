@@ -25,6 +25,4 @@ def findLongestSubarrayBySum(s, arr):
                 solution = True
                 if len(arr) == ((index_range[1] - index_range[0])+1):
                     return index_range
-    if solution == False:
-        return [-1]
-    return index_range
+    return index_range if solution else [-1]
