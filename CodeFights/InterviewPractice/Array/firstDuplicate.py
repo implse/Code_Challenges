@@ -6,6 +6,17 @@
 # for which the second occurrence has a smaller index than the second occurrence
 # of the other number does. If there are no such elements, return -1.
 
+# Time Complexity : O(n) / Space Complexity : O(1)
+def firstDuplicate(a):
+    ln = len(a)
+    for i in a:
+        idx = (i - 1) % ln
+        if a[idx] > ln:
+            return idx + 1
+        a[idx] += ln
+    return - 1
+
+# Time Complexity : O(n) / Space Complexity : O(n)
 def firstDuplicate(a):
     num = {}
     for n in a:
