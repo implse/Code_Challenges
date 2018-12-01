@@ -1,4 +1,7 @@
+# https://app.codesignal.com/challenge/cWB64385L6Fe6zD4D
+
 # Each note in the chromatic scale corresponds to a sound wave, which has a unique frequency.
+
 # The same set of notes appear in higher octaves (with higher frequencies), and in lower
 # octaves (with lower frequencies), and there's a system called scientific pitch notation
 # which distinguishes between notes in different octaves (for example, F\#3 is two octaves below F\#5)
