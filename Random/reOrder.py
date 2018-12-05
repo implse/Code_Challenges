@@ -27,7 +27,7 @@ def reorder(lst, pivot):
 print(reorder(lst, pivot))
 
 # In place solution
-def reorder(lst, p):
+def reorder(lst, pivot):
     i = 0
     j = 0
     k = len(lst) - 1
