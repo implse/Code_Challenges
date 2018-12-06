@@ -8,9 +8,7 @@ class Node(object):
         self.next = None
 
 def swap_by_two(node):
-    while node:
-        temp = node.value
-        node.value = node.next.value
-        node.next.value = temp
+    while node and node.next:
+        node.value, node.next.value = node.next.value, node.value
         node = node.next.next
     return node
