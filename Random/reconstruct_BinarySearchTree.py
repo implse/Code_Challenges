@@ -43,13 +43,13 @@ class Tree(object):
             return None
         else:
             result = []
-            def DepthFirstSearch(node):
+            def DepthFirstSearch_post_order(node):
                 if node.left:
-                    DepthFirstSearch(node.left)
+                    DepthFirstSearch_post_order(node.left)
                 if node.right:
-                    DepthFirstSearch(node.right)
+                    DepthFirstSearch_post_order(node.right)
                 result.append(node.value)
-            DepthFirstSearch(self.root)
+            DepthFirstSearch_post_order(self.root)
         return result
 # Reconstruct function
 def reconstruct_tree(lst):
@@ -61,5 +61,5 @@ def reconstruct_tree(lst):
 # Test
 lst = [2, 4, 3, 8, 7, 5]
 
-t = reconstruct_tree(postorder)
+t = reconstruct_tree(lst)
 print(t.DepthFirstSearch())
