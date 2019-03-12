@@ -32,7 +32,7 @@ print(pow_recursive(2, -10))
 print(pow_recursive(2, 0))
 
 
-# Best Solution
+# Best Solution O(log exponent)
 
 # We can rewrite x^y as the following :
     # If y is even, then x^y = (x^2) ^ (y/2)
