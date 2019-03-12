@@ -30,3 +30,49 @@ def pow_recursive(base, exponent):
 print(pow_recursive(2, 10))
 print(pow_recursive(2, -10))
 print(pow_recursive(2, 0))
+
+
+# Best Solution
+
+# We can rewrite x^y as the following :
+    # If y is even, then x^y = (x^2) ^ (y/2)
+    # If y is odd, then x^y = x * ((x^2) ^ ((y - 1) / 2))
+
+# Iterative
+def pow(base, exponent):
+    # Negative exponent
+    if exponent < 0:
+        base = 1 / base
+        exponent *= -1
+
+    coeff = 1
+    while exponent > 1:
+        if exponent % 2 == 0:
+            base *= base
+            exponent = exponent // 2
+        else:
+            coeff *= base
+            base *= base
+            exponent = (exponent - 1) // 2
+    return 1 if exponent == 0 else coeff * base
+
+print(pow(2, 10))
+print(pow(2, -10))
+print(pow(2, 0))
+
+# Recursive
+def pow(x, y):
+    if y < 0:
+        return pow(1 / x, -y)
+    elif y == 0:
+        return 1
+    elif y == 1:
+        return x
+    elif y % 2 == 0:
+        return pow(x * x, y // 2)
+    else: # y is odd
+        return x * pow(x * x, y // 2)
+
+print(pow(2, 10))
+print(pow(2, -10))
+print(pow(2, 0))
