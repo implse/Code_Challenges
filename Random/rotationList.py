@@ -13,7 +13,6 @@ def rotation_point_2(rotated_list):
   high = len(rotated_list) - 1
   while low <= high:
     mid = (low + high) // 2
-    print(mid, rotated_list[mid])
     mid_next = (mid + 1) % len(rotated_list)
     mid_previous = (mid - 1) % len(rotated_list)
     if rotated_list[mid] < rotated_list[mid_next] and rotated_list[mid] < rotated_list[mid_previous]:
