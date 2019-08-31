@@ -26,4 +26,5 @@ def max_value(nums):
     return max_found[0]
 
 
-print(max_value([1, 12, 3]))
+print(max_value([1, 12, 3])) # 39
+print(max_value([1, 12, -3])) # 33
