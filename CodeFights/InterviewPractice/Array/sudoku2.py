@@ -9,39 +9,39 @@
 # Note that the puzzle represented by grid does not have to be solvable.
 
 def sudoku2(grid):
-    ln_row = len(grid)
-    ln_col = len(grid[0])
-    # row check
-    for r in range(ln_row):
-        if check_line(grid[r]) != True:
-            return False
-    # column check
-    for c in range(ln_col):
-        line = []
-        for r in range(ln_row):
-            line.append(grid[r][c])
-        if check_line(line) != True:
-            return False
-    # 9 cubes to check
-    l = 0
-    while l < 9:
-        k = 0
-        while k < 9:
-            line = []
-            for y in range(k, k + 3):
-                for x in range(l, l + 3):
-                    line.append(grid[y][x])
-            k += 3
-            if check_line(line) != True:
+    #check rows
+    for row in range(len(grid)):
+        row_map = dict()
+        for col in range(len(grid[0])):
+            if grid[row][col] in row_map.keys():
                 return False
-        l += 3
+            else:
+                if grid[row][col] != ".":
+                    row_map[grid[row][col]] = 1
+
+    # check cols
+    for col in range(len(grid[0])):
+        col_map = dict()
+        for row in range(len(grid)):
+            if grid[row][col] in col_map.keys():
+                return False
+            else:
+                if grid[row][col] != ".":
+                    col_map[grid[row][col]] = 1
+    # check 3*3
+    for row in range(0, 9, 3):
+      for col in range(0, 9, 3):
+        if not check_small_grid(grid, row, col):
+          valid = False
+          return False
     return True
 
-def check_line(line):
-    check_num = {"1":0, "2":0, "3":0, "4":0, "5":0, "6":0, "7":0, "8":0, "9":0}
-    for l in line:
-        if l != '.':
-            check_num[l] += 1
-            if check_num[l] > 1:
+def check_small_grid(grid, row, col):
+    small_grid_map = dict()
+    for i in range(row, row + 3):
+        for j in range(col, col + 3):
+            if grid[i][j] != "." and grid[i][j] in small_grid_map.keys():
                 return False
+            else:
+                small_grid_map[grid[i][j]] = 1
     return True
