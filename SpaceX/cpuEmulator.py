@@ -5,27 +5,26 @@ def cpuEmulator(subroutine):
     index = 0
     while index != len(subroutine):
         routine = subroutine[index].split(" ")
-        routine_id = routine[0]
+        instruction = routine[0]
         # MOV
-        if routine_id == "MOV":
+        if instruction == "MOV":
             r1, r2 = routine[1].split(",")
             r2 = int(r2[2]) if r2[1:].startswith("0") else int(r2[1:])
             if r1.startswith("R"):
                 r1 = int(r1[2]) if r1[1:].startswith("0") else int(r1[1:])
                 registers[r2] = registers[r1]
             else:
-                r1 = int(r1)
-                registers[r2] = r1
+                registers[r2] = int(r1)
             index += 1
         # ADD
-        if routine_id == "ADD":
+        if instruction == "ADD":
             r1, r2 = routine[1].split(",")
             r1 = int(r1[2]) if r1.startswith("0") else int(r1[1:])
             r2 = int(r2[2]) if r2.startswith("0") else int(r2[1:])
             registers[r1] = (registers[r1] + registers[r2]) % 2**32
             index += 1
         # DEC
-        if routine_id == "DEC":
+        if instruction == "DEC":
             r1 = routine[1]
             r1 = int(r1[2]) if r1.startswith("0") else int(r1[1:])
             registers[r1] -= 1
@@ -33,7 +32,7 @@ def cpuEmulator(subroutine):
                 registers[r1] = (2**32) - 1
             index += 1
         # INC
-        if routine_id == "INC":
+        if instruction == "INC":
             r1 = routine[1]
             r1 = int(r1[2]) if r1.startswith("0") else int(r1[1:])
             registers[r1] += 1
@@ -41,25 +40,25 @@ def cpuEmulator(subroutine):
                 registers[r1] = 0
             index += 1
         # INV
-        if routine_id == "INV":
+        if instruction == "INV":
             r1 = routine[1]
             r1 = int(r1[2]) if r1.startswith("0") else int(r1[1:])
             r1_value = registers[r1]
             registers[r1] = ~r1_value
             index += 1
         # JUMP
-        if routine_id == "JMP":
+        if instruction == "JMP":
             r1 = int(routine[1]) - 1
             index = r1
         # JUMP R00 = 0
-        if routine_id == "JZ":
+        if instruction == "JZ":
             r1 = int(routine[1]) - 1
             if registers[0] == 0:
                 index = r1
             else:
                 index += 1
-        if routine_id == "NOP":
-            if routine_id == subroutine[-1]:
+        if instruction == "NOP":
+            if instruction == subroutine[-1]:
                 break
             else:
                 index += 1
