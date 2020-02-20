@@ -62,7 +62,7 @@ def cpuEmulator(subroutine):
                 break
             else:
                 index += 1
-    return str(registers[42])
+    return str(registers[42] & 0xFFFFFFFF)
 
 
 # Test

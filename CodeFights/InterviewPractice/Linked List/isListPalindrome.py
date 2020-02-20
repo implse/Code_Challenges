@@ -8,32 +8,34 @@ class ListNode(object):
     self.value = x
     self.next = None
 
+# Time O(n) / Sapce O(1)
 def isListPalindrome(l):
-    # Check for Empty list
-    if not l or not l.next:
-        return True
-    # Get the size and the middle point
-    size = 0
-    node = l
-    while node != None:
-        size += 1
-        node = node.next
-    middle = size // 2
-    # Place the middle node
-    middle_node = l
-    for i in range(middle):
-        middle_node = middle_node.next
-    if size % 2 == 1:
-        middle_node = middle_node.next
-    # Reverse
-    current_node = middle_node
-    next_node = current_node.next
-    for _ in range(middle - 1):
-        next_node.next, current_node, next_node = current_node, next_node,next_node.next
-    # Check palindrome
-    for _ in range(middle):
-        if current_node.value != l.value:
+    # find middle node
+    slow = l
+    fast = l
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+
+    first_half = l
+    second_half = reverse(slow)
+
+    # Compare first half and second half
+    while first_half and second_half:
+        if first_half.value != second_half.value:
             return False
-        current_node = current_node.next
-        l = l.next
+        first_half = first_half.next
+        second_half = second_half.next
     return True
+
+
+def reverse(l):
+    current_node = l
+    previous_node = None
+    next_node = None
+    while current_node:
+        next_node = current_node.next
+        current_node.next = previous_node
+        previous_node = current_node
+        current_node = next_node
+    return previous_node
