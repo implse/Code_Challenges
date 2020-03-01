@@ -19,7 +19,7 @@ def removeKFromList(l, k):
     node = l
     while node:
         if node.value == k:
-            if prev != None:
+            if prev is not None:
                 prev.next = node.next
             else:
                 l = node.next
