@@ -10,6 +10,18 @@ first_color, second_color = rank.most_common(2)
 print(first_color, second_color)
 
 
+# Solution with a Max Heap
+from collections import Counter
+import heapq
+
+n = int(lines[0])
+colors = lines[1:]
+
+color1, color2 = heapq.nlargest(2, [(color, score) for color, score in Counter(colors.items()])
+
+print(color1[1], color2[1])
+
+
 # Solution classic
 n = int(lines[0])
 colors = lines[1:]
@@ -34,12 +46,14 @@ for color, score in rank.items():
         first_score = score
         first_color = color
 
-rank[first_color] = -1
+rank[first_color] *= -1
 
 # Second color
 for color, score in rank.items():
     if score > second_score:
         second_score = score
         second_color = color
+
+rank[second_color] *= -1
 
 print(first_color, second_color)
