@@ -7,16 +7,16 @@ def getPermutations(nums):
     if len(nums) < 2:
         return [nums]
     else:
-        permutations = []
+        all_permutations = []
         for i in range(len(nums)):
             remaining = nums.copy()
             remaining.pop(i)
             # Rercursive case
-            remainingPermutations = getPermutations(remaining)
+            permutations = getPermutations(remaining)
             removeElement = [nums[i]]
-            for permutation in remainingPermutations:
-                permutations.append(removeElement + permutation)
-    return permutations
+            for permutation in permutations:
+                all_permutations.append(removeElement + permutation)
+    return all_permutations
 
 nums = [2, 5, 3]
 print(getPermutations(nums))
