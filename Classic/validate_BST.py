@@ -1,4 +1,4 @@
-# Given a binary tree, determine if it is a valid Binary Search Tree
+# Given a Binary Tree, determine if it is a valid Binary Search Tree
 
 class Node:
     def __init__(self, value):
