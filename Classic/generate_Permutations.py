@@ -21,7 +21,6 @@ print(getPermutations(nums))
 
 
 # Given an input string like "abc" return all possible permutations
-
 def getPermutations(str):
     chars = list(str)
     # Base case
